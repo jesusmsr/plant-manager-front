@@ -18,8 +18,11 @@
           aria-current="page"
           routerLink="home">Home</a>
         <a class="nav-link"
-          routerLink="login">Login</a>
-        <a class="nav-link">Logout</a>
+          routerLink="login"
+          *ngIf="!isLoggedIn">Login</a>
+        <a *ngIf="isLoggedIn"
+          (click)="logout()"
+          class="nav-link">Logout</a>
       </div>
     </div>
   </div>
