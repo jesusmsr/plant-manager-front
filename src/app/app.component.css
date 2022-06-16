@@ -1,0 +1,7 @@
+#alerts-container {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    max-width: 20vw;
+    z-index: 1;
+}

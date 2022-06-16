@@ -1,3 +1,14 @@
+<div id="alerts-container">
+  <div class="alert {{alertType}} alert-dismissible"
+    role="alert"
+    *ngIf="showAlert">
+    {{alertMsg}}
+    <button type="button"
+      class="btn-close"
+      data-bs-dismiss="alert"
+      aria-label="Close"></button>
+  </div>
+</div>
 <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand"
@@ -20,6 +31,9 @@
         <a class="nav-link"
           routerLink="login"
           *ngIf="!isLoggedIn">Login</a>
+        <a class="nav-link"
+          routerLink="plants"
+          *ngIf="isLoggedIn">My plants</a>
         <a *ngIf="isLoggedIn"
           (click)="logout()"
           class="nav-link">Logout</a>

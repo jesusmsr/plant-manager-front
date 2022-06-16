@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Alert } from 'src/app/models/alert.model';
+import { AlertsService } from 'src/app/services/alerts.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
@@ -11,11 +13,13 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class LoginPageComponent implements OnInit {
   isLoggedIn: boolean = false;
   errorMsg?: string;
+  alert = new Alert();
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private token: TokenStorageService
+    private token: TokenStorageService,
+    private alertsService: AlertsService
   ) { }
 
   loginForm = this.formBuilder.group({
@@ -37,7 +41,11 @@ export class LoginPageComponent implements OnInit {
         this.reloadPage();
       },
         (error) => {
+
           this.errorMsg = error.error.error;
+          this.alert.alertMsg = this.alertsService.getAlertMsg(this.errorMsg!);
+          this.alert.alertType = 'alert-danger';
+          this.alertsService.sendAlert(this.alert)
           console.log(this.getApiErrors(this.errorMsg));
         });
     }
