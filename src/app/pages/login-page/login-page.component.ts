@@ -34,11 +34,12 @@ export class LoginPageComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe((response: any) => {
-        console.log(response);
+        console.log(response.token.access);
         this.token.saveToken(response.token.access);
+        this.token.saveRefreshToken(response.token.refresh)
         this.token.saveUser(response);
         this.isLoggedIn = true;
-        this.reloadPage();
+        window.location.replace('http://localhost:4200/');
       },
         (error) => {
 

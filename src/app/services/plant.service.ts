@@ -13,10 +13,6 @@ export class PlantService {
   ) { }
 
   createPlant(plant: any) {
-    return this.http.post(`${this.BASE_URL}/plant/create`, {
-      plant: plant
-    }, {
-      headers: new HttpHeaders().set('Content-Type', 'multipart/form-data')
-    });
+    return this.http.post(`${this.BASE_URL}/plant/create/`, plant);
   }
 }

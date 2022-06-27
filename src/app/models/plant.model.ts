@@ -1,4 +1,5 @@
 export class Plant {
-    plantName!: string;
-    image!: string;
+    name!: string;
+    code!: string;
+    type!: string;
 }

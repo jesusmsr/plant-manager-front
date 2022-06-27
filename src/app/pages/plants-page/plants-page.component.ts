@@ -16,8 +16,9 @@ export class PlantsPageComponent implements OnInit {
   ) { }
 
   addPlantForm = this.formBuilder.group({
-    plantName: [''],
-    image: ['']
+    name: [''],
+    code: [''],
+    type: ['']
   })
 
   ngOnInit(): void {
@@ -25,8 +26,9 @@ export class PlantsPageComponent implements OnInit {
 
   onSubmit() {
     let plant = new Plant();
-    plant.plantName = this.addPlantForm.value.plantName;
-    plant.image = this.addPlantForm.value.image;
+    plant.name = this.addPlantForm.value.name;
+    plant.code = this.addPlantForm.value.code;
+    plant.type = this.addPlantForm.value.type;
     console.log(this.addPlantForm.value);
     this.plantService.createPlant(plant).subscribe(response => {
       console.log(response);

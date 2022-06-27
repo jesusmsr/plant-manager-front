@@ -40,7 +40,6 @@ export class AppComponent implements OnInit {
         this.alertType = value.alertType;
         this.alertMsg = value.alertMsg;
       }
-      console.log(value);
     });
   }
 
