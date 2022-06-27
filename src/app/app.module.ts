@@ -9,13 +9,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PlantsPageComponent } from './pages/plants-page/plants-page.component';
 import { authInterceptorProviders } from './services/auth-interceptor.service';
+import { PlantsOverviewComponent } from './components/plants-overview/plants-overview.component';
+import { PlantFormComponent } from './pages/plant-form/plant-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     HomePageComponent,
-    PlantsPageComponent
+    PlantsPageComponent,
+    PlantsOverviewComponent,
+    PlantFormComponent
   ],
   imports: [
     BrowserModule,

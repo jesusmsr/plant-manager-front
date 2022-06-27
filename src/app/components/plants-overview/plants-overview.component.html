@@ -1,0 +1,23 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date added</th>
+            <th scope="col">Type</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let plant of items">
+            <th scope="row">{{ plant.code }}</th>
+            <td>{{ plant.name }}</td>
+            <td>{{ plant.createdAt }}</td>
+            <td>@mdo</td>
+            <td>
+                <button class="btn btn-primary"
+                    [routerLink]="['/plant',plant.id]">Edit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
