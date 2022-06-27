@@ -1,7 +1,56 @@
+<div class="modal fade"
+    tabindex="-1"
+    id="exampleModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addPlantForm"
+                    (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label class="form-label">Plant name</label>
+                        <input type="text"
+                            class="form-control"
+                            formControlName="plantName">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <input type="file"
+                            class="form-control"
+                            formControlName="image">
+                    </div>
+                    <button type="submit"
+                        class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="button"
+                    class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div class="card plant-page-container">
 
     <div class="card-body">
-        <h5 class="card-title">My plants</h5>
+        <div class="card-header-custom">
+            <h5 class="card-title">My plants</h5>
+            <button class="btn btn-secondary"
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Add</button>
+        </div>
+
         <hr>
     </div>
 </div>
