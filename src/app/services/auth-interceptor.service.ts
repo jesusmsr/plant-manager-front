@@ -43,11 +43,13 @@ export class AuthInterceptor implements HttpInterceptor {
       if (token)
         return this.authService.refreshToken(token).pipe(
           switchMap((token: any) => {
+            console.log(token);
             this.isRefreshing = false;
-            this.token.saveToken(token.accessToken);
-            this.refreshTokenSubject.next(token.accessToken);
+            this.token.saveToken(token.access);
+            this.refreshTokenSubject.next(token.access);
+            console.log(token);
 
-            return next.handle(this.addTokenHeader(request, token.accessToken));
+            return next.handle(this.addTokenHeader(request, token.access));
           }),
           catchError((err) => {
             this.isRefreshing = false;

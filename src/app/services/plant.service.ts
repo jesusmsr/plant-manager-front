@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Plant } from '../models/plant.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,8 @@ export class PlantService {
     return this.http.post(`${this.BASE_URL}/plant/create/`, plant);
   }
 
-  uploadImg(image: any, plant: any) {
-    return this.http.post(`${this.BASE_URL}/plant/${plant.id}/add-image/`, {
-      image: image,
-      plant: plant
-    });
+  uploadImg(image: any, plant: Plant) {
+    return this.http.post(`${this.BASE_URL}/plant/${plant.id}/add-image/`, image);
   }
 
   getAllPlants() {

@@ -42,8 +42,19 @@ export class PlantFormComponent implements OnInit {
     });
   }
 
+  onChange(event: any) {
+    console.log(event.target.files);
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.imageForm.get('image')!.setValue(file);
+    }
+  }
+
   onSubmitImage() {
-    this.plantService.uploadImg(this.imageForm.value.image, this.plant).subscribe((response: any) => {
+    const formData = new FormData();
+    formData.append('image', this.imageForm.get('image')!.value);
+
+    this.plantService.uploadImg(formData, this.plant).subscribe((response: any) => {
       console.log(response);
     })
   }
