@@ -42,6 +42,7 @@ export class PlantsPageComponent implements OnInit {
     this.plantService.createPlant(formData).subscribe(response => {
       this.plantService.reloadPlantsTable.next(true);
       this.closeModal.nativeElement.click();
+      this.addPlantForm.reset();
     })
   }
 
