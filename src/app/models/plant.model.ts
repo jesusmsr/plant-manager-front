@@ -4,4 +4,5 @@ export class Plant {
     code!: string;
     type!: string;
     createdAt?: string;
+    plantImage!: any[];
 }
