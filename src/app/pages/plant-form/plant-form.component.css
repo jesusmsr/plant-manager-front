@@ -17,6 +17,14 @@
 }
 .card{
     max-width: 20rem;
+    max-height: 20rem;
+    
+}
+
+.card-img-top{
+    width: 20rem;
+    max-height: inherit;
+    object-fit: cover;
 }
 .fa-pen-to-square{
     font-size: 2rem;

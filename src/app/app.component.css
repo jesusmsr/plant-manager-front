@@ -5,3 +5,7 @@
     max-width: 20vw;
     z-index: 1;
 }
+
+.navbar-green{
+    background-color: #5bcf76 !important;
+}
