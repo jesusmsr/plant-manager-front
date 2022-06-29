@@ -16,6 +16,10 @@ export class PlantService {
     private http: HttpClient
   ) { }
 
+  updatePlant(data: any, plantId: string){
+    return this.http.put(`${this.BASE_URL}/plant/${plantId}/update/`,data);
+  }
+
   createPlant(plant: any) {
     return this.http.post(`${this.BASE_URL}/plant/create/`, plant);
   }

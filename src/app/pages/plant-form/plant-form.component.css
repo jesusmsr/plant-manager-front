@@ -1,4 +1,33 @@
-#plant-form-holder {
+#plant-form-page {
     width: 40vw;
     margin: 10vh;
+    margin-top: 4vh;
+    display: flex;
+    flex-direction: column;
+}
+#plant-form-holder{
+    margin-top: 20px;
+}
+#plantForm{
+    display: flex;
+    flex-direction: row;
+}
+.plant-data-form{
+    margin-left: 2rem;
+}
+.card{
+    max-width: 20rem;
+}
+.fa-pen-to-square{
+    font-size: 2rem;
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    color: lightgrey;
+    transition: all .25s;
+}
+.fa-pen-to-square:hover{
+    transition: all .25s;
+    color: grey;
+    cursor: pointer;
 }

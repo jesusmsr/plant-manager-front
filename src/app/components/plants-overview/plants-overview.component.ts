@@ -27,4 +27,8 @@ export class PlantsOverviewComponent implements OnInit {
     })
   }
 
+  deletePlant(id: any){
+    console.log(id);
+  }
+
 }
