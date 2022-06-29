@@ -16,6 +16,7 @@ export class PlantFormComponent implements OnInit {
   plantId!: string;
   plant!: Plant;
   plantDetailForm!: FormGroup;
+  formData = new FormData();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -36,8 +37,6 @@ export class PlantFormComponent implements OnInit {
 
         this.plantDetailForm = this.formBuilder.group({
           name: [this.plant.name],
-          code: [this.plant.code],
-          type: [this.plant.type],
           image: [this.plant.image]
         });
       });
@@ -45,10 +44,15 @@ export class PlantFormComponent implements OnInit {
   }
 
   onChange(event: any) {
+    let formData = new FormData();
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.plantDetailForm.get('image')!.setValue(file);
     }
+    this.formData.append('image', this.plantDetailForm.get('image')!.value);
+    this.plantService.updatePlant(this.formData, this.plantId).subscribe((response: any)=>{
+      window.location.reload();
+    })
   }
 
   openFilePicker(){
@@ -56,13 +60,10 @@ export class PlantFormComponent implements OnInit {
   }
 
   onSubmit(){
-    let formData = new FormData();
-    formData.append('name', this.plantDetailForm.value.name);
-    formData.append('code', this.plantDetailForm.value.code);
-    formData.append('type', this.plantDetailForm.value.type);
-    formData.append('image', this.plantDetailForm.get('image')!.value);
+    
+    this.formData.append('name', this.plantDetailForm.value.name);
 
-    this.plantService.updatePlant(formData, this.plantId).subscribe((response: any)=>{
+    this.plantService.updatePlant(this.formData, this.plantId).subscribe((response: any)=>{
       window.location.reload();
     })
   }

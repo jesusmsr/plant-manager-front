@@ -14,6 +14,7 @@ export class PlantsOverviewComponent implements OnInit {
   ) { }
 
   items!: Plant[];
+  deletePlantId?: number;
 
   ngOnInit(): void {
     this.plantService.getAllPlants().subscribe((response: any) => {
@@ -27,8 +28,14 @@ export class PlantsOverviewComponent implements OnInit {
     })
   }
 
-  deletePlant(id: any){
-    console.log(id);
+  deletePlant(){
+    this.plantService.deletePlant(this.deletePlantId!).subscribe((response:any)=>{
+      window.location.reload();
+    })
+  }
+
+  deletePlantModal(id: any){
+    this.deletePlantId = id;
   }
 
 }

@@ -16,6 +16,10 @@ export class PlantService {
     private http: HttpClient
   ) { }
 
+  deletePlant(id: number){
+    return this.http.delete(`${this.BASE_URL}/plant/${id}/delete/`);
+  }
+
   updatePlant(data: any, plantId: string){
     return this.http.put(`${this.BASE_URL}/plant/${plantId}/update/`,data);
   }

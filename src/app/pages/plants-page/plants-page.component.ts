@@ -19,8 +19,6 @@ export class PlantsPageComponent implements OnInit {
 
   addPlantForm = this.formBuilder.group({
     name: [''],
-    code: [''],
-    type: [''],
     image: ['']
   })
 
@@ -38,11 +36,7 @@ export class PlantsPageComponent implements OnInit {
     let formData = new FormData();
     let plant = new Plant();
     plant.name = this.addPlantForm.value.name;
-    plant.code = this.addPlantForm.value.code;
-    plant.type = this.addPlantForm.value.type;
     formData.append('name', this.addPlantForm.value.name);
-    formData.append('code', this.addPlantForm.value.code);
-    formData.append('type', this.addPlantForm.value.type);
     formData.append('image', this.addPlantForm.get('image')!.value);
     
     this.plantService.createPlant(formData).subscribe(response => {
