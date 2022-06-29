@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Plant } from '../models/plant.model';
 
 @Injectable({
@@ -8,6 +9,8 @@ import { Plant } from '../models/plant.model';
 export class PlantService {
 
   BASE_URL = 'http://127.0.0.1:8000';
+
+  reloadPlantsTable: BehaviorSubject<any> = new BehaviorSubject(false);
 
   constructor(
     private http: HttpClient

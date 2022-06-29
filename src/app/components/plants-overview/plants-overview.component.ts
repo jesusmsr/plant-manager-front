@@ -19,6 +19,12 @@ export class PlantsOverviewComponent implements OnInit {
     this.plantService.getAllPlants().subscribe((response: any) => {
       this.items = response;
     });
+
+    this.plantService.reloadPlantsTable.subscribe(()=>{
+      this.plantService.getAllPlants().subscribe((response: any) => {
+        this.items = response;
+      });
+    })
   }
 
 }

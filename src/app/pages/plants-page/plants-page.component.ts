@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Plant } from 'src/app/models/plant.model';
 import { PlantService } from 'src/app/services/plant.service';
@@ -9,6 +9,8 @@ import { PlantService } from 'src/app/services/plant.service';
   styleUrls: ['./plants-page.component.css']
 })
 export class PlantsPageComponent implements OnInit {
+
+  @ViewChild('closeModal') closeModal!: ElementRef
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,7 +33,8 @@ export class PlantsPageComponent implements OnInit {
     plant.type = this.addPlantForm.value.type;
     console.log(this.addPlantForm.value);
     this.plantService.createPlant(plant).subscribe(response => {
-      console.log(response);
+      this.plantService.reloadPlantsTable.next(true);
+      this.closeModal.nativeElement.click();
     })
   }
 
