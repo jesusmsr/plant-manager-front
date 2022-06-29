@@ -43,7 +43,6 @@ export class PlantFormComponent implements OnInit {
   }
 
   onChange(event: any) {
-    console.log(event.target.files);
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.imageForm.get('image')!.setValue(file);

@@ -31,8 +31,13 @@
                             class="form-control"
                             formControlName="type">
                     </div>
-
-                    
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <input type="file"
+                            class="form-control"
+                            formControlName="image"
+                            (change)="onChange($event)">
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">

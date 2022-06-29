@@ -20,19 +20,32 @@ export class PlantsPageComponent implements OnInit {
   addPlantForm = this.formBuilder.group({
     name: [''],
     code: [''],
-    type: ['']
+    type: [''],
+    image: ['']
   })
 
   ngOnInit(): void {
   }
 
+  onChange(event: any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.addPlantForm.get('image')!.setValue(file);
+    }
+  }
+
   onSubmit() {
+    let formData = new FormData();
     let plant = new Plant();
     plant.name = this.addPlantForm.value.name;
     plant.code = this.addPlantForm.value.code;
     plant.type = this.addPlantForm.value.type;
-    console.log(this.addPlantForm.value);
-    this.plantService.createPlant(plant).subscribe(response => {
+    formData.append('name', this.addPlantForm.value.name);
+    formData.append('code', this.addPlantForm.value.code);
+    formData.append('type', this.addPlantForm.value.type);
+    formData.append('image', this.addPlantForm.get('image')!.value);
+    
+    this.plantService.createPlant(formData).subscribe(response => {
       this.plantService.reloadPlantsTable.next(true);
       this.closeModal.nativeElement.click();
     })
