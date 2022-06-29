@@ -5,4 +5,5 @@ export class Plant {
     type!: string;
     createdAt?: string;
     plantImage!: any[];
+    image!: string;
 }

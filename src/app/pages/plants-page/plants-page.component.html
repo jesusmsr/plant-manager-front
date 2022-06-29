@@ -12,7 +12,7 @@
             </div>
             <div class="modal-body">
                 <form [formGroup]="addPlantForm"
-                    (ngSubmit)="onSubmit()">
+                    (ngSubmit)="onSubmit()" id="new-plant-form">
                     <div class="mb-3">
                         <label class="form-label">Plant name</label>
                         <input type="text"
@@ -32,16 +32,15 @@
                             formControlName="type">
                     </div>
 
-                    <button type="submit"
-                        class="btn btn-primary">Submit</button>
+                    
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button"
+                <button #closeModal type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal">Close</button>
-                <button type="button"
-                    class="btn btn-primary">Save changes</button>
+                    <button type="submit" form="new-plant-form"
+                    class="btn btn-primary">Submit</button>
             </div>
         </div>
     </div>
